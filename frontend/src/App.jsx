@@ -12,7 +12,7 @@ const App = () => {
   useEffect(() => {
     //useEffect is a hook that allows you to perform side effects in function components
     axios
-      .get("http://localhost:3001/todos") //make a get request to the backend API to fetch a list of todos
+      .get("http://localhost:5555/api/todos") //make a get request to the backend API to fetch a list of todos
       .then((response) => {
         //if the request is successful
         setTodos(response.data.data); //set the todos state variable to the data received from the server
@@ -26,7 +26,7 @@ const App = () => {
     const data = { title: newItem }; //create an object with the title property set to the value of the newItem state variable
     axios
       .post("http://localhost:5555/api/todos", data) //the new todo object is created with the title set to the value of newItem and then sent to the backend API via POST request
-      .then((response) => {
+      .then(response => {
         setTodos([...todos, response.data]); //updates the todos state with the new todo item included
         setNewItem(""); //clears the input field
       })
@@ -49,9 +49,9 @@ const App = () => {
   return (
     <div className="frame">
       <h1 className="text-wrapper">todo list</h1> {/*display the title*/}
-      <ToDoForm newItem={newItem} setNewItem={setNewItem} />{" "}
+      <ToDoForm newItem={newItem} setNewItem={setNewItem} addTodo={addTodo}/>{" "}
       {/*render the ToDoForm component*/}
-      <ToDoList /> {/*render the ToDoList component*/}
+      <ToDoList todos={todos} deleteTodo={deleteTodo} /> {/*render the ToDoList component*/}
     </div>
   );
 };

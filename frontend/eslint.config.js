@@ -18,11 +18,8 @@ export default [
       },
     },
     settings: { react: { version: "18.3" } },
-    plugins: {
-      react,
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
-    },
+    plugins:
+      ["react", "react-hooks", "react-refresh"],
     rules: {
       "react/prop-types": "off",
       ...js.configs.recommended.rules,
