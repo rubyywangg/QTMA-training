@@ -14,6 +14,7 @@ import cors from "cors"; // import cors package
 const app = express(); //initialize an instance of Express application using express() function
 
 app.use(express.json()); //this is middleware, which is used to parse incoming JSON requests and make them available to read in the request body
+app.use(cors()); //use the cors middleware to allow cross-origin requests
 
 /*this is to create an HTTP route 
 - HTTP routes are a specific URL in the app that determines how a app should respond to HTTP requests with that URL
@@ -45,5 +46,3 @@ mongoose
     //if the connection is unsuccessful, this function will be called (which is the print statement)
     console.log(error);
   });
-
-app.use(cors());
